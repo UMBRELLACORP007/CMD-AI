@@ -9,7 +9,11 @@ Simple AI-style terminal made using a Windows Batch (`.bat`) file.
 - Generate battery report
 - Run system file scan
 - Show startup applications
-- Updates will be coming soon...
+- System info, hardware, and network tools
+- Task management and Windows utilities
+- Wi-Fi profile and password viewer
+- Quick access to folders and web shortcuts
+- Power controls (shutdown/restart/cancel)
 
 ---
 
@@ -19,7 +23,7 @@ Simple AI-style terminal made using a Windows Batch (`.bat`) file.
 2. Save it as:
 
 ```bat
-ai-terminal.bat
+ai_terminal.bat
 ```
 
 3. Double click the file to run it
@@ -30,6 +34,7 @@ ai-terminal.bat
 
 | Command | Description |
 |----------|-------------|
+| `menu` | Show all commands |
 | `hello` | Greeting message |
 | `hi` | Simple hello |
 | `who are you` | Shows AI identity |
@@ -38,10 +43,45 @@ ai-terminal.bat
 | `00` | Generates battery report |
 | `scan` | Runs system file scan |
 | `startup` | Shows startup apps |
-| `exit` | Closes the terminal |
+| `sysinfo` | Full system information |
+| `cpu` | CPU model |
+| `gpu` | GPU model |
+| `ram` | Installed RAM modules |
+| `disk` | Disk free/total sizes |
+| `battery` | Battery status |
+| `ip` | IP configuration |
+| `ipall` | Full IP configuration |
+| `ping` | Ping google.com |
+| `dns` | Flush DNS cache |
+| `netcheck` | Ping 8.8.8.8 (5 times) |
+| `task` | Open Task Manager |
+| `tasks` | List running tasks |
+| `kill` | Kill a process by name |
+| `control` | Open Control Panel |
+| `settings` | Open Windows Settings |
+| `update` | Open Windows Update |
+| `activation` | Windows activation status |
+| `dxdiag` | DirectX Diagnostic Tool |
+| `device` | Device Manager |
+| `diskmgmt` | Disk Management |
+| `services` | Services Manager |
+| `logs` | Event Viewer |
+| `wifi` | Show saved Wi-Fi profiles |
+| `wifipass` | Show Wi-Fi profile details |
+| `temp` | Open temp folder |
+| `cleantemp` | Clear temp folder |
+| `downloads` | Open Downloads |
+| `desktop` | Open Desktop |
+| `recent` | Open Recent items |
+| `chrome` | Launch Chrome |
+| `youtube` | Open YouTube |
+| `github` | Open GitHub |
+| `shutdown` | Shutdown in 5 seconds |
+| `restart` | Restart in 5 seconds |
+| `cancel` | Cancel shutdown/restart |
+| `exit` | Close the terminal |
 
 ---
-
 
 # Notes
 
