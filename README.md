@@ -1,32 +1,45 @@
 # AI TERMINAL 🤖
 
-Simple AI-style terminal made using a Windows Batch (`.bat`) file.
+Advanced AI-style Windows terminal made using Batch scripting (`.bat`).
 
-## Features
+AI TERMINAL combines useful Windows utilities, system tools, network commands, cleanup tools, and quick shortcuts into a single interactive CMD interface.
 
-- Basic AI chat replies
-- Show current time and date
-- Generate battery report
-- Run system file scan
-- Show startup applications
-- System info, hardware, and network tools
-- Task management and Windows utilities
+---
+
+# Features
+
+- AI-style command interface
+- Optional Admin Mode
+- System repair and cleanup tools
+- Hardware and battery information
+- Network diagnostics
 - Wi-Fi profile and password viewer
-- Quick access to folders and web shortcuts
-- Power controls (shutdown/restart/cancel)
+- Windows utility shortcuts
+- Task and process management
+- Temp cleaner and optimization tools
+- Quick folder access
+- Browser and website shortcuts
+- Shutdown and restart controls
 
 ---
 
 # How To Use
 
-1. Copy the batch code into a file
+1. Copy the source code into a file
 2. Save it as:
 
 ```bat
 ai_terminal.bat
 ```
 
-3. Double click the file to run it
+3. Double click the file to launch
+
+4. Select:
+
+```txt
+1 = Run as Administrator
+2 = Run Normally
+```
 
 ---
 
@@ -37,57 +50,134 @@ ai_terminal.bat
 | `menu` | Show all commands |
 | `hello` | Greeting message |
 | `hi` | Simple hello |
-| `who are you` | Shows AI identity |
-| `time` | Displays current time |
-| `date` | Displays current date |
-| `00` | Generates battery report |
-| `scan` | Runs system file scan |
-| `startup` | Shows startup apps |
-| `sysinfo` | Full system information |
-| `cpu` | CPU model |
-| `gpu` | GPU model |
-| `ram` | Installed RAM modules |
-| `disk` | Disk free/total sizes |
-| `battery` | Battery status |
-| `ip` | IP configuration |
-| `ipall` | Full IP configuration |
-| `ping` | Ping google.com |
-| `dns` | Flush DNS cache |
-| `netcheck` | Ping 8.8.8.8 (5 times) |
-| `task` | Open Task Manager |
-| `tasks` | List running tasks |
-| `kill` | Kill a process by name |
-| `control` | Open Control Panel |
-| `settings` | Open Windows Settings |
-| `update` | Open Windows Update |
-| `activation` | Windows activation status |
-| `dxdiag` | DirectX Diagnostic Tool |
-| `device` | Device Manager |
-| `diskmgmt` | Disk Management |
-| `services` | Services Manager |
-| `logs` | Event Viewer |
-| `wifi` | Show saved Wi-Fi profiles |
-| `wifipass` | Show Wi-Fi profile details |
-| `temp` | Open temp folder |
-| `cleantemp` | Clear temp folder |
-| `downloads` | Open Downloads |
-| `desktop` | Open Desktop |
-| `recent` | Open Recent items |
-| `chrome` | Launch Chrome |
-| `youtube` | Open YouTube |
-| `github` | Open GitHub |
-| `shutdown` | Shutdown in 5 seconds |
-| `restart` | Restart in 5 seconds |
-| `cancel` | Cancel shutdown/restart |
-| `exit` | Close the terminal |
+| `who are you` | AI identity |
+| `time` | Current system time |
+| `date` | Current system date |
 
 ---
 
-# Notes
+# System Repair & Optimization
 
-- Some commands may require Administrator permissions
-- Works only on Windows
-- `wmic` may not work on newer Windows versions
+| Command | Description |
+|----------|-------------|
+| `00` | Generate battery report |
+| `scan` | Run system file scan |
+| `verify` | Verify system files |
+| `dismcleanup` | Cleanup Windows image |
+| `chkdsk` | Scan disk for errors |
+| `cleanmgrset` | Configure Disk Cleanup |
+| `cleanmgrrun` | Run Disk Cleanup |
+| `speedup` | Run safe optimization tasks |
+| `cleantemp` | Clear temp files |
+
+---
+
+# Hardware Information
+
+| Command | Description |
+|----------|-------------|
+| `sysinfo` | Full system information |
+| `cpu` | CPU model |
+| `gpu` | GPU model |
+| `ram` | Installed RAM info |
+| `disk` | Disk space info |
+| `battery` | Battery status |
+| `activation` | Windows activation status |
+| `dxdiag` | DirectX Diagnostic Tool |
+
+---
+
+# Network Commands
+
+| Command | Description |
+|----------|-------------|
+| `ip` | Basic IP configuration |
+| `ipall` | Full IP configuration |
+| `ping` | Ping Google |
+| `dns` | Flush DNS cache |
+| `netcheck` | Network connectivity test |
+| `winsock` | Reset Winsock |
+| `wifi` | Show saved Wi-Fi profiles |
+| `wifipass` | Show Wi-Fi password/details |
+
+---
+
+# Power Commands
+
+| Command | Description |
+|----------|-------------|
+| `energy` | Generate energy report |
+| `hibernateoff` | Disable hibernation |
+| `lastwake` | Last wake source |
+| `requests` | Active power requests |
+| `shutdown` | Shutdown PC |
+| `restart` | Restart PC |
+| `cancel` | Cancel shutdown/restart |
+
+---
+
+# Task & Process Management
+
+| Command | Description |
+|----------|-------------|
+| `task` | Open Task Manager |
+| `tasks` | Show running tasks |
+| `kill` | Kill process by name |
+
+---
+
+# Windows Utilities
+
+| Command | Description |
+|----------|-------------|
+| `control` | Open Control Panel |
+| `settings` | Open Windows Settings |
+| `update` | Open Windows Update |
+| `device` | Open Device Manager |
+| `diskmgmt` | Open Disk Management |
+| `services` | Open Services Manager |
+| `logs` | Open Event Viewer |
+
+---
+
+# Quick Access Commands
+
+| Command | Description |
+|----------|-------------|
+| `temp` | Open temp folder |
+| `downloads` | Open Downloads folder |
+| `desktop` | Open Desktop folder |
+| `recent` | Open Recent files |
+
+---
+
+# Browser & Web Shortcuts
+
+| Command | Description |
+|----------|-------------|
+| `chrome` | Launch Google Chrome |
+| `youtube` | Open YouTube |
+| `github` | Open GitHub |
+
+---
+
+# Exit Command
+
+| Command | Description |
+|----------|-------------|
+| `exit` | Close AI TERMINAL |
+
+---
+
+# Admin Mode
+
+Some commands require Administrator permissions.
+
+If a restricted command is used without Admin Mode, AI TERMINAL will display:
+
+```txt
+AI: Admin mode required. Restart in admin mode (choose 1 on launch).
+```
 
 ---
 
@@ -95,7 +185,16 @@ ai_terminal.bat
 
 - Windows Batch Scripting
 - CMD Commands
-- Windows Utilities (`powercfg`, `sfc`, `wmic`)
+- Windows Utilities
+- PowerShell / WMIC / DISM / SFC
+
+---
+
+# Notes
+
+- Works only on Windows
+- Some commands may not work on older/newer Windows versions
+- `wmic` is deprecated on some Windows 11 builds
 
 ---
 
