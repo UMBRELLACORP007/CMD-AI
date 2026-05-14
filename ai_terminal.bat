@@ -52,6 +52,7 @@ if /i "%cmd%"=="time" goto show_time
 if /i "%cmd%"=="date" goto show_date
 if /i "%cmd%"=="00" goto battery_report
 if /i "%cmd%"=="scan" goto scan
+if /i "%cmd%"=="verify" goto verify
 if /i "%cmd%"=="startup" goto startup
 if /i "%cmd%"=="sysinfo" goto sysinfo
 if /i "%cmd%"=="ip" goto ip
@@ -59,6 +60,16 @@ if /i "%cmd%"=="ipall" goto ipall
 if /i "%cmd%"=="ping" goto ping
 if /i "%cmd%"=="dns" goto dns
 if /i "%cmd%"=="netcheck" goto netcheck
+if /i "%cmd%"=="winsock" goto winsock
+if /i "%cmd%"=="energy" goto energy
+if /i "%cmd%"=="hibernateoff" goto hibernateoff
+if /i "%cmd%"=="lastwake" goto lastwake
+if /i "%cmd%"=="requests" goto requests
+if /i "%cmd%"=="dismcleanup" goto dismcleanup
+if /i "%cmd%"=="chkdsk" goto chkdsk
+if /i "%cmd%"=="cleanmgrset" goto cleanmgrset
+if /i "%cmd%"=="cleanmgrrun" goto cleanmgrrun
+if /i "%cmd%"=="speedup" goto speedup
 if /i "%cmd%"=="task" goto taskmgr
 if /i "%cmd%"=="tasks" goto tasks
 if /i "%cmd%"=="kill" goto kill
@@ -100,9 +111,13 @@ echo ===== AI TERMINAL COMMANDS =====
 echo hello, hi, who are you, time, date
 echo 00 (battery report)
 echo scan (system file scan)
+echo verify (system file verify)
 echo startup
 echo sysinfo, cpu, gpu, ram, disk, battery
 echo ip, ipall, ping, dns, netcheck
+echo winsock, energy, hibernateoff, lastwake, requests
+echo dismcleanup, chkdsk, cleanmgrset, cleanmgrrun
+echo speedup
 echo task, tasks, kill
 echo control, settings, update
 echo device, diskmgmt, services, logs
@@ -158,6 +173,17 @@ if errorlevel 1 (
 )
 goto main
 
+:verify
+call :require_admin || goto main
+echo AI: Verifying system files...
+sfc /verifyonly
+if errorlevel 1 (
+    echo AI: Verify completed with errors.
+) else (
+    echo AI: Verify complete!
+)
+goto main
+
 :startup
 wmic startup get caption,command
 if errorlevel 1 echo AI: Unable to read startup apps.
@@ -191,6 +217,75 @@ goto main
 
 :netcheck
 ping 8.8.8.8 -n 5
+goto main
+
+:winsock
+call :require_admin || goto main
+netsh winsock reset
+if errorlevel 1 (
+    echo AI: Winsock reset failed.
+) else (
+    echo AI: Winsock reset complete.
+)
+goto main
+
+:energy
+call :require_admin || goto main
+echo AI: Generating energy report...
+powercfg -energy
+goto main
+
+:hibernateoff
+call :require_admin || goto main
+powercfg -h off
+if errorlevel 1 (
+    echo AI: Failed to disable hibernation.
+) else (
+    echo AI: Hibernation disabled.
+)
+goto main
+
+:lastwake
+powercfg /lastwake
+goto main
+
+:requests
+powercfg /requests
+goto main
+
+:dismcleanup
+call :require_admin || goto main
+DISM /Online /Cleanup-Image /StartComponentCleanup
+goto main
+
+:chkdsk
+call :require_admin || goto main
+chkdsk C: /scan
+goto main
+
+:cleanmgrset
+call :require_admin || goto main
+cleanmgr /sageset:1
+goto main
+
+:cleanmgrrun
+call :require_admin || goto main
+cleanmgr /sagerun:1
+goto main
+
+:speedup
+call :require_admin || goto main
+echo AI: Running safe speedup tasks...
+cleanmgr /sagerun:1
+if not exist "%temp%" (
+    echo AI: Temp folder not found.
+) else (
+    del /q /f /s "%temp%\*" >nul 2>&1
+)
+ipconfig /flushdns >nul 2>&1
+netsh winsock reset >nul 2>&1
+DISM /Online /Cleanup-Image /StartComponentCleanup >nul 2>&1
+echo AI: Speedup tasks complete.
 goto main
 
 :taskmgr
